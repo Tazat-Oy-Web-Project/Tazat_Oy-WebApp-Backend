@@ -1,0 +1,121 @@
+1) USERS MODULE
+Purpose: System access and role management.
+User
+•	id (PK)
+•	name
+•	email
+•	role (staff / admin)
+•	active
+
+
+
+2) BLOG MODULE (Public News & Cleaning Tips)
+Relationship: One BlogCategory can contain many BlogPosts.
+
+BlogCategory
+•	id (PK)
+•	name
+
+BlogPost
+•	id (PK)
+•	categoryId (FK → BlogCategory.id)
+•	title
+•	content
+•	featuredImageFileId
+•	createdAt
+
+
+
+3) CAREERS MODULE
+Relationship: One JobPost can receive many JobApplications.
+
+JobPost
+•	id (PK)
+•	title
+•	description
+•	featuredImageFileId
+•	location
+•	type (full-time / part-time)
+•	status (open / closed)
+•	createdAt
+
+JobApplication
+•	applicationId (PK)
+•	jobId (FK → JobPost.id) (Automatically filled when applying for a specific job)
+•	fullName
+•	email
+•	phone
+•	city
+•	availability
+•	message
+•	consent
+•	cvFileId (optional)
+•	status (new / reviewed / contacted)
+•	createdAt
+
+
+
+4) REQUESTS MODULE (Lead Generation)
+Note: These tables are independent and store incoming public requests.
+
+QuoteRequest
+•	id (PK)
+•	fullName
+•	companyName (optional)
+•	email
+•	phone
+•	serviceType
+•	spaceType
+•	approxSizeM2
+•	roomsCount (optional)
+•	floorsCount (optional)
+•	addressOrCity
+•	cleaningFrequency (one-time / daily / weekly / bi-weekly / monthly / custom)
+•	frequencyCustomText (optional)
+•	additionalServices (array)
+•	preferredStartDate
+•	preferredTime (optional)
+•	additionalComments (optional)
+•	consent (true / false)
+•	status (new / in_progress / completed)
+•	createdAt
+
+ContactRequest
+•	id (PK)
+•	fullName
+•	companyName
+•	email
+•	phone (optional)
+•	message
+•	status (new / replied)
+•	createdAt
+
+
+5) STAFF CONTENT & TRAINING
+Purpose: Internal communication and staff resources.
+
+StaffNews
+•	id (PK)
+•	title
+•	content
+•	createdAt
+
+Announcement
+•	id (PK)
+•	message
+•	createdAt
+
+TrainingItem
+•	id (PK)
+•	title
+•	description
+•	fileId OR link
+•	createdAt
+
+
+
+
+RELATIONSHIP SUMMARY
+•	BlogCategory.id → BlogPost.categoryId
+•	JobPost.id → JobApplication.jobId
+•	All other tables operate independently
