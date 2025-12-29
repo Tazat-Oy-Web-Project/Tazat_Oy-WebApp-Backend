@@ -100,7 +100,7 @@ jobRouter.get('/', async (req, res) => {
 
 // DELETE a job post by ID
 jobRouter.delete('/:id', async (req, res) => {
-    
+
     const jobPostId = req.params.id;
     console.log('Deleting job post with ID:', jobPostId);
 
@@ -115,6 +115,27 @@ jobRouter.delete('/:id', async (req, res) => {
         res.status(500).json({ error: 'Failed to delete job post' });
     }
 
+});
+
+
+// GET a job post by ID
+jobRouter.get('/:id', async (req, res) => {
+
+    const jobPostId = req.params.id;
+    console.log('Fetching job post with ID:', jobPostId);
+    try {
+
+        const doc = await db.collection('jobPosts').doc(jobPostId).get();
+        if (!doc.exists) {
+            return res.status(404).json({ error: 'Job post not found' });
+        }
+        res.status(200).json({ id: doc.id, ...doc.data() });
+    }
+
+    catch (error) {
+        console.log("GET JOB POST ERROR:", error);
+        res.status(500).json({ error: 'Failed to fetch job post' });
+    }
 });
 
 
