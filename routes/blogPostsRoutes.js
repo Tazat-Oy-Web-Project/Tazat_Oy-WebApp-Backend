@@ -99,4 +99,23 @@ blogRouter.delete('/:id', async (req, res) => {
 });
 
 
+// GET a blog post by ID
+blogRouter.get('/:id', async (req, res) => {
+    const blogPostId = req.params.id;
+    console.log('Fetching blog post with ID:', blogPostId);
+    try {
+        const docRef = db.collection('blogPosts').doc(blogPostId);
+        const doc = await docRef.get();
+        if (!doc.exists) {
+            return res.status(404).json({ error: 'Blog post not found' });
+        }
+        res.status(200).json({ id: doc.id, ...doc.data() });
+    }
+    catch (error) {
+        console.log("GET BLOG POST ERROR:", error);
+        res.status(500).json({ error: 'Failed to fetch blog post' });
+    }
+});
+
+
 module.exports = blogRouter;
