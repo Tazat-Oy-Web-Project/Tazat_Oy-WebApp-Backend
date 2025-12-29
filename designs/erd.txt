@@ -1,0 +1,117 @@
+1) Users
+User
+•	id
+•	name
+•	email
+•	role (staff / admin)
+•	active
+
+
+
+2) Blog (Public News & Tips)
+BlogPost
+•	id
+•	title
+•	content
+•	category (string or categoryId)
+•	featuredImageFileId
+•	createdAt
+BlogCategory
+•	id
+•	name
+
+
+
+
+
+3) Staff Content
+StaffNews
+•	id
+•	title
+•	content
+•	createdAt
+Announcement
+•	id
+•	message
+•	createdAt
+
+
+
+
+4) Training
+TrainingItem
+•	id
+•	title
+•	description
+•	fileId OR link
+•	createdAt
+
+
+
+
+
+
+
+
+
+5) Careers
+JobPost
+•	id
+•	title
+•	description
+•	location
+•	type (full-time / part-time)
+•	status (open / closed)
+•	createdAt
+
+JobApplication
+•	applicationId
+•	jobId ✅ (when somebody clicks on apply this job from available jobs, the job id automatically pasted here)
+•	fullName
+•	email
+•	phone
+•	city
+•	availability
+•	message
+•	consent
+•	cvFileId (optional)
+•	status (new / reviewed / contacted)
+•	createdAt
+
+
+
+
+
+
+6) Requests
+QuoteRequest
+•	id
+•	fullName
+•	companyName (optional)
+•	email
+•	phone
+•	serviceType
+•	spaceType
+•	approxSizeM2
+•	roomsCount (optional)
+•	floorsCount (optional)
+•	addressOrCity
+•	cleaningFrequency (one-time / daily / weekly / bi-weekly / monthly / custom)
+•	frequencyCustomText (optional)
+•	additionalServices (array of selected services)
+•	preferredStartDate
+•	preferredTime (optional)
+•	additionalComments (optional)
+•	consent (true/false)
+•	status (new / in_progress / completed /)
+•	createdAt
+
+ContactRequest
+•	id
+•	fullName
+•	companyName
+•	email
+•	phone (optional)
+•	message
+•	status (new / replied )
+•	createdAt

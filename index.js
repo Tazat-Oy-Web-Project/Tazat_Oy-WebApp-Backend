@@ -9,15 +9,14 @@ app.use(cors());
 // Middleware to parse JSON bodies
 app.use(express.json());
 
+// Load environment variables
+require("dotenv").config();
+
 
 
 // ========================== ROUTES ========================== //
-
-// Sample Route
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
-
+const blogPostsRoutes = require('./routes/blogPostsRoutes');
+app.use('/blogPosts', blogPostsRoutes);
 
 
 
