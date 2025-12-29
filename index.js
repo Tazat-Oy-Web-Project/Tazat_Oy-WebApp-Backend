@@ -18,6 +18,9 @@ require("dotenv").config();
 const blogPostsRoutes = require('./routes/blogPostsRoutes');
 app.use('/blogPosts', blogPostsRoutes);
 
+const jobPostsRoutes = require('./routes/jobPostsRoutes');
+app.use('/jobPosts', jobPostsRoutes);
+
 
 
 // Port Listening
