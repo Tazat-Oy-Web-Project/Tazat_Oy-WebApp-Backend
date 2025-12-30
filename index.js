@@ -14,6 +14,12 @@ require("dotenv").config();
 
 
 
+// Health Check Endpoint ============= //
+app.get('/health', (req, res) => {
+  res.status(200).json({ ok: true, message: 'Backend is running' });
+});
+
+
 // ========================== ROUTES ========================== //
 const blogPostsRoutes = require('./routes/blogPostsRoutes');
 app.use('/blogPosts', blogPostsRoutes);
