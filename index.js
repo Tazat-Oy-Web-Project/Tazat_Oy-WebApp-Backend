@@ -23,8 +23,13 @@ app.use('/jobPosts', jobPostsRoutes);
 
 
 
+const port = process.env.PORT || 3000;
+
 // Port Listening
-const port = 3000;
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
-});
+if (!process.env.VERCEL) {
+  app.listen(port, () => {
+    console.log(`Server running on port ${port}`);
+  });
+}
+
+module.exports = app;
